@@ -17,6 +17,18 @@ Key Requirements:
 - Users should be able to save and load form configurations as JSON data. (Here the form
   fields configuration needs to be saved as JSON)
 
+## Setup Instructions
+1. Git clone the repo
+
+2. Run below commands
+    - ```npm install```
+
+3. Run the development server
+    - ```npm run dev```
+
+4. Open [http://localhost:3000/](http://localhost:3000/) to see the website
+
+
 ## Solution
 
 - The project's data structure was designed to store forms in JSON format. Here is a sample structure:
@@ -80,6 +92,16 @@ The project's implementation involved creating various components and routes in 
   - _From Offical Documentation:_ If you want to build a new app or a new website fully with React, we recommend picking one of the React-powered frameworks popular in the community (NEXTJS).
 - uuid
 - React-toastify
+
+## Screen Shots
+![Home Page](./public/HomePage.png)
+
+![Add Form](./public/AddForm.png)
+
+![Preview 1](./public/Preview.png)
+
+![Preview 2](./public//preview-1.png)
+
 
 
 ### Conclusion
