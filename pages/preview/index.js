@@ -13,11 +13,11 @@ const Preview = () => {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [formField, setFormField] = useState([]);
-  const [AnswerText, setAnswerText] = useState("")
-  const [AnswerTextArea, setAnswerTextArea] = useState("")
-  const [AnswerDropDown, setAnswerDropDown] = useState("Not Selected")
-  const [AnswerCheckBox, setAnswerCheckBox] = useState([])
-  const [AnswerRadioButton, setAnswerRadioButton] = useState("")
+  const [answerText, setAnswerText] = useState("")
+  const [answerTextArea, setAnswerTextArea] = useState("")
+  const [answerDropDown, setAnswerDropDown] = useState("Not Selected")
+  const [answerCheckBox, setAnswerCheckBox] = useState([])
+  const [answerRadioButton, setAnswerRadioButton] = useState("")
   
 
   useEffect(() => {
@@ -39,42 +39,42 @@ const Preview = () => {
   }, [id]);
 
 
-  const SubmitForm = () => {
-    if (AnswerText == "") {
+  const submitForm = () => {
+    if (answerText == "") {
       toast.error("Enter some text in text-input")
       return
     }
-    else if (AnswerTextArea.length < 30) {
+    else if (answerTextArea.length < 30) {
       toast.error("Minimum 30 words are required")
       return
     }
-    else if (AnswerDropDown == "Not Selected") {
+    else if (answerDropDown == "Not Selected") {
       toast.error("Please Select any option from dropdown")
       return
     }
-    else if (AnswerCheckBox.length == 0) {
+    else if (answerCheckBox.length == 0) {
       toast.error("Please Select any option from Checkbox")
       return
     }
-    else if (AnswerRadioButton == "") {
+    else if (answerRadioButton == "") {
       toast.error("Please Select any option from Radiobutton")
       return
     }
 
-    const SubmittedForm = {
+    const newSubmittedForm = {
       id: uuidv4(),
       formId: id,
       title,
       description,
-      AnswerCheckBox,
-      AnswerDropDown,
-      AnswerRadioButton,
-      AnswerTextArea,
-      AnswerText
+      answerCheckBox,
+      answerDropDown,
+      answerRadioButton,
+      answerTextArea,
+      answerText
     }
 
     const existingForms = JSON.parse(localStorage.getItem('SubmittedForms')) || [];
-    existingForms.push(SubmittedForm);
+    existingForms.push(newSubmittedForm);
     localStorage.setItem('SubmittedForms', JSON.stringify(existingForms));
     router.push('/');
   }
@@ -101,7 +101,7 @@ const Preview = () => {
                     <div className='text-primary text-md rounded-lg block flex-1 p-2.5 outline-none w-2/3'>
                       {e.title}
                     </div>
-                    <textarea className=' p-2.5 outline-none max-w-screen' name={e.id} id={e.id} cols={e.options[0].value[1]} rows={e.options[0].value[0]} placeholder='Enter your answer' value={AnswerTextArea} onChange={(e) => { setAnswerTextArea(e.target.value) }}></textarea>
+                    <textarea className=' p-2.5 outline-none max-w-screen' name={e.id} id={e.id} cols={e.options[0].value[1]} rows={e.options[0].value[0]} placeholder='Enter your answer' value={answerTextArea} onChange={(e) => { setAnswerTextArea(e.target.value) }}></textarea>
                   </div>
                 )
               } else if (e.fieldType === "Text") {
@@ -110,25 +110,25 @@ const Preview = () => {
                     <div className='text-primary text-md rounded-lg block flex-1 p-2.5 outline-none w-2/3'>
                       {e.title}
                     </div>
-                    <input type="text" id={e.id} className='text-primary text-md rounded-lg block flex-1 p-2.5 outline-none w-2/3' placeholder='Enter your answer' value={AnswerText} onChange={(e) => { setAnswerText(e.target.value) }} />
+                    <input type="text" id={e.id} className='text-primary text-md rounded-lg block flex-1 p-2.5 outline-none w-2/3' placeholder='Enter your answer' value={answerText} onChange={(e) => { setAnswerText(e.target.value) }} />
                   </div>
                 )
               } else if (e.fieldType === "DropDown") {
                 return (
                   <div key={key} className='w-full lg:w-1/2 flex flex-col justify-start items-start px-8 py-4 bg-white rounded-lg text-primary font-medium text-md mb-5'>
-                    <DropDownPreview AnswerDropDown={AnswerDropDown} setAnswerDropDown={setAnswerDropDown} option={e} />
+                    <DropDownPreview answerDropDown={answerDropDown} setAnswerDropDown={setAnswerDropDown} option={e} />
                   </div>
                 )
               } else if (e.fieldType === "CheckBox") {
                 return (
                   <div key={key} className='w-full lg:w-1/2 flex flex-col justify-start items-start px-8 py-4 bg-white rounded-lg text-primary font-medium text-md mb-5'>
-                    <CheckBoxPreview option={e} AnswerCheckBox={AnswerCheckBox} setAnswerCheckBox={setAnswerCheckBox} />
+                    <CheckBoxPreview option={e} answerCheckBox={answerCheckBox} setAnswerCheckBox={setAnswerCheckBox} />
                   </div>
                 )
               } else if (e.fieldType === "RadioButton") {
                 return (
                   <div key={key} className='w-full lg:w-1/2 flex flex-col justify-start items-start px-8 py-4 bg-white rounded-lg text-primary font-medium text-md mb-5'>
-                    <RadioButtonPreview option={e} AnswerRadioButton={AnswerRadioButton} setAnswerRadioButton={setAnswerRadioButton} />
+                    <RadioButtonPreview option={e} answerRadioButton={answerRadioButton} setAnswerRadioButton={setAnswerRadioButton} />
                   </div>
                 )
               }
@@ -136,7 +136,7 @@ const Preview = () => {
           }
           <div className='w-full lg:w-1/2 flex justify-end pb-20'>
             <button
-              onClick={SubmitForm}
+              onClick={submitForm}
               className='py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-white focus:outline-none bg-secondary rounded-lg border hover:bg-alternative hover:text-white hover:transition-all'
             >
               Submit

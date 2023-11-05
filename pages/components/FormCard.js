@@ -3,11 +3,11 @@ import React from 'react'
 
 const FormCard = ({ title, description, id }) => {
     const router = useRouter()
-    const HandleClick = () => {
+    const handleClick = () => {
         router.push(`/preview?id=${id}`);
     }
 
-    const HandleDelete = () => {
+    const handleDelete = () => {
         const existingForms = JSON.parse(localStorage.getItem('form'));
         const updatedForm = existingForms.filter((item) => item.id !== id);
         localStorage.setItem('form', JSON.stringify(updatedForm));
@@ -18,8 +18,8 @@ const FormCard = ({ title, description, id }) => {
             <div className="text-xl font-bold mb-2">{title}</div>
             <div className="text-alternative text-md text-justify mb-5">{description}</div>
             <div className='flex flex-wrap justify-start items-center'>
-                <button type="button" onClick={HandleClick} className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium bg-primary text-primary rounded-lg">Preview</button>
-                <button type="button" onClick={HandleDelete} className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium bg-alternative text-white rounded-lg">Delete</button>
+                <button type="button" onClick={handleClick} className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium bg-primary text-primary rounded-lg">Preview</button>
+                <button type="button" onClick={handleDelete} className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium bg-alternative text-white rounded-lg">Delete</button>
             </div>
         </div>
     )

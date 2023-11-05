@@ -1,6 +1,6 @@
 import React from 'react'
 
-const RadioButtonPreview = ({ option, AnswerRadioButton, setAnswerRadioButton }) => {
+const RadioButtonPreview = ({ option, answerRadioButton, setAnswerRadioButton }) => {
     const handleRadioChange = (value) => {
         setAnswerRadioButton(value);
     };
@@ -15,7 +15,7 @@ const RadioButtonPreview = ({ option, AnswerRadioButton, setAnswerRadioButton })
                         <input
                             type="radio"
                             value={option.value}
-                            checked={AnswerRadioButton === option.value}
+                            checked={answerRadioButton === option.value}
                             onChange={() => handleRadioChange(option.value)}
                             className="w-4 h-4 mr-5"
                         />

@@ -14,7 +14,7 @@ const UntitledQuestion = ({ id, formField, setFormField }) => {
     ]);
 
     // Function to update an object with a specific id
-    const SaveQuestion = () => {
+    const saveQuestion = () => {
         // Find the index of the object with the matching id
         if (!title || fieldType == 'Options' || optionCollection.length == 0) {
             toast.error('Title or Description or No option in Question')
@@ -40,7 +40,7 @@ const UntitledQuestion = ({ id, formField, setFormField }) => {
         }
     };
 
-    const DeleteQuestion = () => {
+    const deleteQuestion = () => {
         const index = formField.findIndex((obj) => obj.id === id);
 
         if (index !== -1) {
@@ -83,10 +83,10 @@ const UntitledQuestion = ({ id, formField, setFormField }) => {
                 }
             </div >
             <div>
-                <button onClick={SaveQuestion} className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-white focus:outline-none bg-secondary rounded-lg border">
+                <button onClick={saveQuestion} className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-white focus:outline-none bg-secondary rounded-lg border">
                     Save Section
                 </button>
-                <button onClick={DeleteQuestion} className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-white focus:outline-none bg-alternative rounded-lg border">
+                <button onClick={deleteQuestion} className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-white focus:outline-none bg-alternative rounded-lg border">
                     Delete Section
                 </button>
             </div>

@@ -7,7 +7,7 @@ const TextAreaCollection = ({ setOptionCollection }) => {
     const [cols, setCols] = useState(0)
     const [id, setId] = useState("")
     const [buttonValue, setButtonValue] = useState("Save")
-    const HandleSave = () => {
+    const handleSave = () => {
         if (rows <= 0 || cols <= 0) {
             toast.error("Enter valid number")
             return
@@ -18,7 +18,7 @@ const TextAreaCollection = ({ setOptionCollection }) => {
         setButtonValue("Update")
         toast.success("Saved rows and columns")
     }
-    const HandleUpdateValue = () => {
+    const handleUpdateValue = () => {
         setOptionCollection((prevInputs) =>
             prevInputs.map((input) =>
                 input.id === id ? { ...input, value: [rows, cols] } : input
@@ -51,7 +51,7 @@ const TextAreaCollection = ({ setOptionCollection }) => {
                 </div>
             </div>
             <div className='w-1/3 flex justify-end items-center'>
-                <button onClick={buttonValue == "Save" ? HandleSave : HandleUpdateValue} className="px-5 py-2 text-sm font-medium text-white focus:outline-none bg-secondary rounded-lg border hover:bg-alternative hover:text-white hover:transition-all">{buttonValue}</button>
+                <button onClick={buttonValue == "Save" ? handleSave : handleUpdateValue} className="px-5 py-2 text-sm font-medium text-white focus:outline-none bg-secondary rounded-lg border hover:bg-alternative hover:text-white hover:transition-all">{buttonValue}</button>
             </div>
         </div>
     )

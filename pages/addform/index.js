@@ -6,12 +6,12 @@ import Questions from '../components/Questions';
 import { ToastContainer, toast } from 'react-toastify';
 
 const AddForm = () => {
-  const router = useRouter();
-  const id = router.query.id;
+
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [formField, setFormField] = useState([]);
-  const SaveForm = (e) => {
+
+  const saveForm = (e) => {
     e.preventDefault();
 
     if (!title || !description || formField.length == 0) {
@@ -32,7 +32,7 @@ const AddForm = () => {
   };
 
 
-  const AddQuestion = () => {
+  const addQuestion = () => {
     setFormField([...formField, { id: uuidv4() }])
   }
   
@@ -66,13 +66,13 @@ const AddForm = () => {
             {/* Save form */}
             <div className='w-full lg:w-1/2 flex justify-end'>
               <button
-                onClick={AddQuestion}
+                onClick={addQuestion}
                 className='py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-white focus:outline-none bg-secondary rounded-lg border hover:bg-alternative hover:text-white hover:transition-all'
               >
                 Add Section
               </button>
               <button
-                onClick={(e) => { SaveForm(e); }}
+                onClick={(e) => { saveForm(e); }}
                 className='py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-white focus:outline-none bg-secondary rounded-lg border hover:bg-alternative hover:text-white hover:transition-all'
               >
                 Save

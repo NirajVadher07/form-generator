@@ -1,11 +1,11 @@
 import React from 'react'
 
-const CheckBoxPreview = ({ option, AnswerCheckBox, setAnswerCheckBox }) => {
+const CheckBoxPreview = ({ option, answerCheckBox, setAnswerCheckBox }) => {
     const toggleOption = (value) => {
-        if (AnswerCheckBox.includes(value)) {
-            setAnswerCheckBox(AnswerCheckBox.filter((option) => option !== value));
+        if (answerCheckBox.includes(value)) {
+            setAnswerCheckBox(answerCheckBox.filter((option) => option !== value));
         } else {
-            setAnswerCheckBox([...AnswerCheckBox, value]);
+            setAnswerCheckBox([...answerCheckBox, value]);
         }
     };
     return (
@@ -19,7 +19,7 @@ const CheckBoxPreview = ({ option, AnswerCheckBox, setAnswerCheckBox }) => {
                         <input
                             type="checkbox"
                             value={option.value}
-                            checked={AnswerCheckBox.includes(option.value)}
+                            checked={answerCheckBox.includes(option.value)}
                             onChange={() => toggleOption(option.value)}
                             className="w-4 h-4 mr-5 "
                         />

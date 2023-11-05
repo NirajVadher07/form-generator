@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useState } from "react";
 import React from 'react'
 
-const DropDownPreview = ({ option, AnswerDropDown, setAnswerDropDown }) => {
+const DropDownPreview = ({ option, answerDropDown, setAnswerDropDown }) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -23,7 +23,7 @@ const DropDownPreview = ({ option, AnswerDropDown, setAnswerDropDown }) => {
         <button
           onClick={toggleDropdown}
           className="text-primary  font-medium rounded-lg text-md border-2 border-primary px-5 py-2.5 text-center inline-flex items-center w-1/3" type="button">
-          {AnswerDropDown}
+          {answerDropDown}
         </button>
         {
           isOpen && (
