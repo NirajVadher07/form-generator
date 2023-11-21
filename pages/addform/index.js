@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { v4 as uuidv4 } from 'uuid';
 import Layout from './layout';
@@ -6,7 +6,7 @@ import Questions from '../components/Questions';
 import { ToastContainer, toast } from 'react-toastify';
 
 const AddForm = () => {
-
+  const router = useRouter()
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [formField, setFormField] = useState([]);
@@ -35,7 +35,12 @@ const AddForm = () => {
   const addQuestion = () => {
     setFormField([...formField, { id: uuidv4() }])
   }
-  
+
+  const inputRef = useRef();
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+
   return (
     <div>
       <ToastContainer />
@@ -52,6 +57,7 @@ const AddForm = () => {
                 className='text-primary text-lg rounded-lg block flex-1 p-2.5 outline-none w-2/3'
                 placeholder='Form Title'
                 value={title}
+                ref={inputRef}
                 onChange={(e) => { setTitle(e.target.value); }}
               />
               <input

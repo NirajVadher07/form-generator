@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <div>
-      <Layout>
+      <Layout>        
         {/* display Form */}
         <div className='px-8 py-4 flex flex-col justify-start items-start'>
           <div className='text-xl font-semibold'>
